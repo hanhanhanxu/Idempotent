@@ -1,0 +1,44 @@
+
+spring:
+  #数据源
+  datasource:
+    #连接池的类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    #连接驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&allowPublicKeyRetrieval=true&autoReconnect=true&connectTimeout=60000
+    username: root
+    password: hanxu
+    druid:
+#      domestic1:  #国外1
+#        url: jdbc:mysql://ip?serverTimezone=GMT%2B8
+#        username: username
+#        password: password
+#
+#      domestic2:  #国外2
+#        url: jdbc:mysql://ip?serverTimezone=GMT%2B8
+#        username: username
+#        password: password
+
+      #初始大小
+      initial-size: 1
+      #最大连接数
+      max-active: 100
+      #最最小空闲连接数
+      min-idle: 10
+      #配置获取连接等待超时的时间
+      max-wait: 60000
+      default-auto-commit: true
+      #池的准备好的语句
+      #      pool-prepared-statements: true
+      #每个连接大小的MAX池准备语句
+      max-pool-prepared-statement-per-connection-size: 20
+
+mybatis:
+  mapper-locations: classpath:static/mapper/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # print sql springboot-mybatis's type
+
+logging:
+  level:
+    com.example.idempotent.mapper: debug
